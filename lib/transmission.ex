@@ -1,5 +1,5 @@
 defmodule Transmission do
-  use ExActor.GenServer
+  use ExActor.GenServer, export: __MODULE__
 
   alias Transmission.Api
   alias Transmission.TorrentAdd
