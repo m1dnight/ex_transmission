@@ -26,7 +26,7 @@ defmodule Transmission.MixProject do
   defp deps do
     [
       {:tesla, "~> 1.3"},
-      {:poison, "~> 4.0"},
+      {:poison, "~> 3.0.1"},
       {:credo, "~> 1.1.5", only: [:dev, :test], runtime: false},
       {:exactor, "~> 2.2.4", warn_missing: false},
       {:ex_doc, "~> 0.21.2", only: :dev, runtime: false}
