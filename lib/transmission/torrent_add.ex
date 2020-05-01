@@ -1,7 +1,7 @@
 defmodule Transmission.TorrentAdd do
   alias Transmission.Utils
 
-  @default_options [filename: nil, metainfo: nil, "download-dir": nil]
+  @default_options [filename: nil, metainfo: nil, "download-dir": nil, paused: false]
 
   def method(options \\ []) do
     options = Keyword.merge(@default_options, options)
@@ -12,7 +12,8 @@ defmodule Transmission.TorrentAdd do
         %{
           filename: options[:filename],
           metainfo: options[:metainfo],
-          "download-dir": options[:"download-dir"]
+          "download-dir": options[:"download-dir"],
+          paused: options[:paused]
         }
         |> Utils.compact()
     }
