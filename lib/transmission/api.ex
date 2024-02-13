@@ -3,7 +3,7 @@ defmodule Transmission.Api do
 
   @middlewares [
     {Middleware.JSON, engine: Poison, engine_opts: [keys: :atoms]},
-    Middleware.Logger,
+    # Middleware.Logger,
     {Middleware.Timeout, timeout: 30_000}
   ]
 

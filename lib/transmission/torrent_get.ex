@@ -22,7 +22,8 @@ defmodule Transmission.TorrentGet do
     "seedRatioMode",
     "error",
     "errorString",
-    "trackers"
+    "trackers",
+    "activityDate"
   ]
 
   def method(ids \\ nil) do
