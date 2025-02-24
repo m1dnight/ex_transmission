@@ -10,12 +10,24 @@ defmodule Transmission do
   alias Transmission.TorrentStartNow
   alias Transmission.TorrentStop
   alias Transmission.TorrentVerify
+  alias Transmission.TorrentSetLocation
 
   defstart start_link(url, username, password) do
     initial_state(%{
       tesla: Api.new(url, username, password),
       token: nil
     })
+  end
+
+  defcall set_location(ids, new_location, move \\ true), state: state do
+    {token, %{}} =
+      Api.execute_method(
+        state.tesla,
+        state.token,
+        TorrentSetLocation.method(ids, new_location, move)
+      )
+
+    set_and_reply(%{state | token: token}, nil)
   end
 
   defcall get_torrents(ids \\ nil), state: state do

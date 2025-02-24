@@ -24,7 +24,8 @@ defmodule Transmission.Api do
            method,
            headers: [{"X-Transmission-Session-Id", token || ""}]
          ) do
-      {:ok, %Tesla.Env{status: 200, body: %{result: "success", arguments: arguments}}} ->
+      {:ok, %Tesla.Env{status: 200, body: body = %{result: "success", arguments: arguments}}} ->
+        IO.inspect(body)
         {token, arguments}
 
       {:ok, %Tesla.Env{status: 409}} ->
